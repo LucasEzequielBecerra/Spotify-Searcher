@@ -17,6 +17,7 @@ const Home = () => {
     const getAccessToken = async function () {
       try {
         const req = await fetch('https://accounts.spotify.com/api/token', authParameters)
+        // eslint-disable-next-line camelcase
         const { access_token } = await req.json()
         setAccessToken(access_token)
       } catch (err) {
