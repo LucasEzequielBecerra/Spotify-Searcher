@@ -1,10 +1,11 @@
+import Searcher from './Components/Searcher/Searcher'
 import Home from './components/Home/Home'
 
 const App = () => {
   return (
     <>
-    <div>HOLA MUNDO</div>
-    <Home/>
+      <Home />
+      <Searcher/>
     </>
   )
 }
