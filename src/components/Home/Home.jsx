@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Input } from '@mui/joy'
 import { Search } from '@mui/icons-material'
+import ItemCardContainer from '../ItemCard/ItemCardContainer'
 
 const Home = () => {
   const clientId = import.meta.env.VITE_CLIENT_ID
   const clientSecret = import.meta.env.VITE_CLIENT_SECRET
 
   const [accessToken, setAccessToken] = useState('')
-  const [searchInput, setSearchInput] = useState('')
 
   const authParameters = {
     method: 'POST',
@@ -30,31 +30,37 @@ const Home = () => {
     getAccessToken()
   }, [])
 
-  async function searchForArtistId () {
+  async function searchForArtists (value) {
     try {
       const searchParameters = {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + accessToken }
       }
 
-      const artistId = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', searchParameters)
+      const artists = await fetch('https://api.spotify.com/v1/search?q=' + value + '&type=artist', searchParameters)
         .then(response => response.json())
-        .then(data => console.log(data.artists.items[0].id))
+        .then(data => data?.artists?.items)
+      return artists
     } catch (error) {
       console.log(error)
     }
   }
 
-  const handleChange = e => {
-    const newInput = e.target.value
-    setSearchInput(newInput)
-    searchForArtistId()
+  const [results, setResults] = useState([])
+
+  const handleChange = async e => {
+    try {
+      const value = e.target.value
+      setResults(await searchForArtists(value))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
     <>
-    <div>Home</div>
     <Input onChange={e => handleChange(e)} placeholder='Search' startDecorator={<Search />}>Searcher</Input>
+    <ItemCardContainer items={results}/>
     </>
   )
 }
