@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 const requestsAccess = async () => {
   const clientId = import.meta.env.VITE_CLIENT_ID
   const clientSecret = import.meta.env.VITE_CLIENT_SECRET
@@ -14,13 +12,12 @@ const requestsAccess = async () => {
     const req = await fetch('https://accounts.spotify.com/api/token', authParameters)
     // eslint-disable-next-line camelcase
     const { access_token } = await req.json()
+    console.log(access_token)
     const searchParameters = {
       method: 'GET',
       headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + access_token }
     }
-    return {
-      searchParameters
-    }
+    return searchParameters
   } catch (err) {
     console.log(err)
   }

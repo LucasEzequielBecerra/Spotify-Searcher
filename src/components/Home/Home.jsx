@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import requestsArtist from '../../services/requestsArtist'
+import Searcher from '../Searcher/Searcher'
 
-const Home = async () => {
+const Home = () => {
   return (
     <>
     <div>Home</div>
-
-    <div className='containerCards'></div>
+    <Searcher/>
     </>
   )
 }
