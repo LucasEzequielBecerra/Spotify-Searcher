@@ -1,6 +1,6 @@
 import { Card, CardCover, CardContent, Typography } from '@mui/joy'
 
-const ItemCard = ({ name, img, key }) => {
+const ItemCard = ({ name, img }) => {
   return (
     <Card sx={{
       minHeight: '280px',

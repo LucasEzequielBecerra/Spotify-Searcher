@@ -1,10 +1,10 @@
-import Searcher from './components/Searcher/Searcher'
+import Searcher from './Components/Searcher/Searcher'
 import Home from './Components/Home/Home'
 
 const App = () => {
   return (
     <>
-      {/* <Home /> */}
+      <Home />
       <Searcher />
     </>
   )
