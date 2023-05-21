@@ -1,42 +1,53 @@
-import Tabs from '@mui/joy/Tabs'
-import TabList from '@mui/joy/TabList'
-import Tab, { tabClasses } from '@mui/joy/Tab'
+import CheckIcon from '@mui/icons-material/Check'
+import Box from '@mui/joy/Box'
+import Checkbox from '@mui/joy/Checkbox'
+import Chip from '@mui/joy/Chip'
 
-const NavCategories = (props) => {
-  const handleClick = (category) => {
-    props.updateCategory(category)
-  }
+const NavCategories = ({ updateCategory, category }) => {
   return (
-    <Tabs aria-label="tabs" sx={{ margin: '.6rem 0' }}>
-
-      <TabList
-        variant="plain"
-        sx={{
-          '--List-padding': '0px',
-          '--List-radius': '0px',
-          '--ListItem-minHeight': '48px',
-          [`& .${tabClasses.root}`]: {
-            boxShadow: 'none',
-            fontWeight: 'md',
-            [`&.${tabClasses.selected}::before`]: {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              left: 'var(--ListItem-paddingLeft)', // change to `0` to stretch to the edge.
-              right: 'var(--ListItem-paddingRight)', // change to `0` to stretch to the edge.
-              bottom: 0,
-              height: 3,
-              bgcolor: 'primary.400'
-            }
-          }
-        }}
-      >
-        <Tab onClick={() => handleClick('artists,albums,tracks')} >All</Tab>
-        <Tab onClick={() => handleClick('artists')} >Artists</Tab>
-        <Tab onClick={() => handleClick('albums')} >Albums</Tab>
-        <Tab onClick={() => handleClick('tracks')}>Tracks</Tab>
-      </TabList>
-    </Tabs>
+    <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', padding: '0.5rem 0' }}>
+      <Box>
+        <Box
+          role="group"
+          aria-labelledby="fav-movie"
+          sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}
+        >
+          {[
+            'Artist',
+            'Album',
+            'Track'
+          ].map((name) => {
+            const checked = category?.includes(name.toLowerCase()) || false
+            return (
+              <Chip
+                key={name}
+                variant={checked ? 'soft' : 'plain'}
+                color={checked ? 'primary' : 'neutral'}
+                startDecorator={
+                  checked && <CheckIcon sx={{ zIndex: 1, pointerEvents: 'none' }} />
+                }
+              >
+                <Checkbox
+                  variant="outlined"
+                  color='primary'
+                  disableIcon
+                  overlay
+                  label={name}
+                  checked={checked}
+                  onChange={(event) => {
+                    updateCategory((names) =>
+                      !event.target.checked
+                        ? names.filter((n) => n !== name.toLowerCase())
+                        : [...names, name.toLowerCase()]
+                    )
+                  }}
+                />
+              </Chip>
+            )
+          })}
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
