@@ -2,13 +2,7 @@ import requestsAccess from './requestsAccess'
 
 export async function searchItems (searchInput, categories) {
   // Declaro el tipo de búsqueda y su límite
-  let type = '&type='
-  categories.forEach((cat, index) => {
-    type = type + cat
-    if (index !== categories.length - 1) {
-      type = type + '%2C'
-    }
-  })
+  const type = '&type=' + categories.join('%2C')
   let limit = 50
   if (type.includes('%')) limit = 10
 
