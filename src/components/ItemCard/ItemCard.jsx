@@ -5,7 +5,6 @@ const ItemCard = ({ name, img }) => {
     <Card sx={{
       minHeight: '280px',
       minWidth: '320px',
-      width: 320,
       transition: '.2s',
       '&:hover': {
         transform: 'translateY(-2px)',
