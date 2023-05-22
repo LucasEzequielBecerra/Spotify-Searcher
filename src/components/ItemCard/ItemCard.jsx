@@ -4,6 +4,7 @@ const ItemCard = ({ name, img }) => {
   return (
     <Card sx={{
       minHeight: '280px',
+      minWidth: '320px',
       width: 320,
       transition: '.2s',
       '&:hover': {

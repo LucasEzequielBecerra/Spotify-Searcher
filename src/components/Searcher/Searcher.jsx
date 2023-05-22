@@ -7,11 +7,11 @@ import { searchItems } from '../../services/requestsItems'
 
 const Searcher = () => {
   const [results, setResults] = useState([])
-  const [category, setCategory] = useState(['artist', 'album', 'track'])
+  const [category, setCategory] = useState([])
   const inputRef = useRef(null)
 
   async function handleChange () {
-    const value = inputRef.current.childNodes[1].value || 'a'
+    const value = inputRef.current.childNodes[1].value || ''
     setResults(await searchItems(value, category))
   }
   return (
@@ -24,9 +24,7 @@ const Searcher = () => {
       }}
       updateCategory={ setCategory }
       category={ category }/>
-      {results.length === 0
-        ? ''
-        : category?.map(cat => <ItemCardContainer key={cat} items={results[cat + 's']?.items} title={cat} />)}
+      {results && category.length === 0 ? ['artist', 'album', 'track'].map(cat => <ItemCardContainer key={cat} items={results[cat + 's']?.items} title={cat}/>) : category.map(cat => <ItemCardContainer key={cat} items={results[cat + 's']?.items} title={cat} />)}
     </>
   )
 }
