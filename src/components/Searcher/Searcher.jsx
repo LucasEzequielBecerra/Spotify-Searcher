@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react'
-import { Input } from '@mui/joy'
+import { useState, useRef, useEffect } from 'react'
+import { Input, CircularProgress } from '@mui/joy'
 import { Search } from '@mui/icons-material'
 import NavCategories from '../NavCategories/NavCategories'
 import ItemCardContainer from '../ItemCard/ItemCardContainer'
@@ -9,12 +9,29 @@ import './Searcher.css'
 const Searcher = () => {
   const [results, setResults] = useState([])
   const [category, setCategory] = useState(['artist', 'album', 'track'])
+  const [load, setLoad] = useState(true)
   const inputRef = useRef(null)
 
   async function handleChange () {
-    const value = inputRef.current.childNodes[1].value || 'a'
-    setResults(await searchItems(value, category))
+    try {
+      setLoad(true)
+      const value = inputRef.current.childNodes[1].value || '.'
+      setResults(await searchItems(value, category))
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoad(false)
+    }
   }
+
+  const showResults = (categories = ['artist', 'album', 'track']) => {
+    return categories.map(cat => <ItemCardContainer key={cat} items={results[cat + 's']?.items} title={cat} />)
+  }
+
+  useEffect(() => {
+    handleChange()
+  }, [])
+
   return (
     <div className='searcher'>
       <Input ref={inputRef} onChange={() => handleChange()} placeholder='Search' startDecorator={<Search />}>Searcher</Input>
@@ -25,9 +42,14 @@ const Searcher = () => {
       }}
       updateCategory={ setCategory }
       category={ category }/>
-      {results.length === 0
-        ? ''
-        : category?.map(cat => <ItemCardContainer key={cat} items={results[cat + 's']?.items} title={cat} />)}
+      {load
+        ? <CircularProgress color='primary'/>
+        : results.length !== 0
+          ? category.length === 0
+            ? showResults()
+            : showResults(category)
+          : 'Not found'
+        }
     </div>
   )
 }

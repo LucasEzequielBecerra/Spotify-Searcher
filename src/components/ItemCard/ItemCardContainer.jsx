@@ -29,12 +29,12 @@ const ItemCardContainer = ({ items, title }) => {
     <>
       <Typography level='h4'>{capitalizeFirstLetter(title + 's')}</Typography>
       <div ref={containerRef} className='results'>
-        {items?.lenght !== 0
-          ? items?.map(item => <ItemCard key={item.id} name={item.name}
+        {items?.length === 0
+          ? 'Not Found'
+          : items?.map(item => <ItemCard key={item.id} name={item.name}
             img={title === 'track'
               ? item.album.images[0]
-              : item.images[0]} />)
-          : 'Not Found'}
+              : item.images[0]} />)}
       </div>
     </>
   )
