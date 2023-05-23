@@ -3,8 +3,8 @@ import { Card, CardCover, CardContent, Typography } from '@mui/joy'
 const ItemCard = ({ name, img }) => {
   return (
     <Card sx={{
-      minHeight: '280px',
-      minWidth: '320px',
+      minHeight: '210px',
+      minWidth: '240px',
       transition: '.2s',
       '&:hover': {
         transform: 'translateY(-2px)',

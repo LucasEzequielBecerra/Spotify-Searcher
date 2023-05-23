@@ -3,8 +3,7 @@ import Searcher from '../Searcher/Searcher'
 const Home = () => {
   return (
     <>
-    <div>Home</div>
-    <Searcher/>
+      <Searcher/>
     </>
   )
 }
