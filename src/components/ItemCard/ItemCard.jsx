@@ -1,10 +1,12 @@
 import { Card, CardCover, CardContent, Typography } from '@mui/joy'
+import LayoutModalDialog from '../DetailArtist/DetailArtist'
 
 const ItemCard = ({ name, img }) => {
   return (
     <Card sx={{
       minHeight: '280px',
       minWidth: '320px',
+      width: 320,
       transition: '.2s',
       '&:hover': {
         transform: 'translateY(-2px)',
@@ -31,6 +33,7 @@ const ItemCard = ({ name, img }) => {
         {name}
       </Typography>
     </CardContent>
+    <LayoutModalDialog />
   </Card>
   )
 }
