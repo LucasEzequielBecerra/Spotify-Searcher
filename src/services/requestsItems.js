@@ -4,8 +4,7 @@ export async function searchItems (searchInput, categories) {
   // Declaro el tipo de búsqueda y su límite
   if (categories.length === 0) categories = ['artist', 'album', 'track']
   const type = '&type=' + categories.join('%2C')
-  let limit = 50
-  if (type.includes('%')) limit = 10
+  const limit = categories.length === 1 ? 50 : 12
 
   // Genero la url y realizo la petición
   try {
