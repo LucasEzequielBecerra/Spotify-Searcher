@@ -10,10 +10,11 @@ export async function searchItems (searchInput, categories) {
   // Genero la url y realizo la petición
   try {
     const searchParameters = await requestsAccess()
-    if (searchInput === '') return
+    if (searchInput === '') return []
     const data = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + type + `&limit=${limit}`, searchParameters)
       .then(response => response.json())
       .then(data => data)
+    console.log(data)
     return data
   } catch (error) {
     console.log(error)
