@@ -4,7 +4,6 @@ import './ItemCard.css'
 import { useRef, useEffect } from 'react'
 
 const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1)
-
 const WithManyCategories = ({ items, title }) => {
   // Scroll para el container
   const containerRef = useRef(null)
