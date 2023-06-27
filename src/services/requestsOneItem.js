@@ -1,6 +1,6 @@
 import requestsAccess from './requestsAccess'
 
-export async function requestsOneItem(type, id) {
+export async function requestsOneItem (type, id) {
   try {
     const searchParameters = await requestsAccess()
     const data = await fetch(`https://api.spotify.com/v1/${type}/${id}`, searchParameters)
