@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { requestsOneItem } from '../../services/requestsOneItem'
 
 const AlbumDetail = () => {
 	const { id } = useParams()
