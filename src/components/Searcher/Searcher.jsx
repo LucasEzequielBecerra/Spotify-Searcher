@@ -25,7 +25,6 @@ const Searcher = () => {
   }
 
   const showResults = (categories = ['artist', 'album', 'track']) => {
-    console.log(categories.length === 1)
     return categories.map(cat => <ItemCardContainer categories={categories} key={cat} items={results[cat + 's']?.items} title={cat} />)
   }
 
