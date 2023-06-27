@@ -8,7 +8,7 @@ import './Searcher.css'
 
 const Searcher = () => {
   const [results, setResults] = useState([])
-  const [category, setCategory] = useState(['artist', 'album', 'track'])
+  const [category, setCategory] = useState([])
   const [load, setLoad] = useState(true)
   const inputRef = useRef(null)
 

@@ -1,5 +1,4 @@
 import { Card, CardCover, CardContent, Typography } from '@mui/joy'
-import LayoutModalDialog from '../DetailArtist/ModalArtist'
 
 const ItemCard = ({ name, img }) => {
   return (
@@ -33,7 +32,6 @@ const ItemCard = ({ name, img }) => {
         {name}
       </Typography>
     </CardContent>
-    <LayoutModalDialog name={name} />
   </Card>
   )
 }

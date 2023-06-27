@@ -1,6 +1,6 @@
 import requestsAccess from './requestsAccess'
 
-export async function searchItems (searchInput, categories) {
+export async function searchItems(searchInput, categories) {
   // Declaro el tipo de búsqueda y su límite
   if (categories.length === 0) categories = ['artist', 'album', 'track']
   const type = '&type=' + categories.join('%2C')
