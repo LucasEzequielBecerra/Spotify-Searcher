@@ -36,7 +36,7 @@ const WithManyCategories = ({ items, title }) => {
       }}>
         {items?.length === 0
           ? 'Not Found'
-          : items?.map(item => <ItemCard key={item.id} name={item.name}
+          : items?.map(item => <ItemCard type={item.type} id={item.id} key={item.id} name={item.name}
             img={title === 'track'
               ? item.album.images[0]
               : item.images[0]} />)}
@@ -59,7 +59,7 @@ const WithACategory = ({ items, title }) => {
       }}>
         {items?.length === 0
           ? 'Not Found'
-          : items?.map(item => <ItemCard key={item.id} name={item.name}
+          : items?.map(item => <ItemCard type={item.type} id={item.id} key={item.id} name={item.name}
             img={title === 'track'
               ? item.album.images[0]
               : item.images[0]} />)}
