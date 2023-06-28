@@ -5,6 +5,18 @@ import { Box, CircularProgress, Typography, Button } from '@mui/joy'
 import { ArrowBackIos } from '@mui/icons-material'
 import { grey } from '@mui/material/colors'
 
+function formatearCifra (cifra) {
+  if (cifra >= 1000000) {
+    const millones = cifra / 1000000
+    return millones.toFixed(1) + ' M'
+  } else if (cifra >= 1000) {
+    const miles = cifra / 1000
+    return miles.toFixed(1) + ' K'
+  } else {
+    return cifra.toLocaleString()
+  }
+}
+
 const ArtistDetail = () => {
   const { id } = useParams()
 
@@ -59,7 +71,7 @@ const ArtistDetail = () => {
             </Link>
             <Box>
               <Typography variant='h1' fontWeight='900' fontSize='5rem' sx={{ color: grey[50], lineHeight: 1.2 }}>{artist.name}</Typography>
-              <Typography sx={{ color: grey[50] }}>{artist.followers.total} followers</Typography>
+              <Typography sx={{ color: grey[50] }}>{formatearCifra(artist.followers.total)} followers</Typography>
             </Box>
           </Box>
         </>

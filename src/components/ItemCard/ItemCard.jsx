@@ -1,7 +1,11 @@
 import { Card, CardCover, CardContent, Typography } from '@mui/joy'
+import { Link } from 'react-router-dom'
 
-const ItemCard = ({ name, img }) => {
+const ItemCard = ({ type, id, name, img }) => {
+  let typeSearch = type
+  if (typeSearch === 'artist') typeSearch = typeSearch + 's'
   return (
+    <Link to={`/${typeSearch}/${id}`}>
     <Card sx={{
       minHeight: '210px',
       minWidth: '240px',
@@ -33,6 +37,7 @@ const ItemCard = ({ name, img }) => {
       </Typography>
     </CardContent>
   </Card>
+    </Link>
   )
 }
 
