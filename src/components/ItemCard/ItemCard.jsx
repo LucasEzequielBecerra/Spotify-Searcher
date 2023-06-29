@@ -2,8 +2,7 @@ import { Card, CardCover, CardContent, Typography } from '@mui/joy'
 import { Link } from 'react-router-dom'
 
 const ItemCard = ({ type, id, name, img }) => {
-  let typeSearch = type
-  if (typeSearch === 'artist') typeSearch = typeSearch + 's'
+  const typeSearch = type + 's'
   return (
     <Link to={`/${typeSearch}/${id}`}>
     <Card sx={{

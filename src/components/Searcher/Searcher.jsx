@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
-import { Input, CircularProgress } from '@mui/joy'
+import { Input } from '@mui/joy'
 import { Search } from '@mui/icons-material'
 import NavCategories from '../NavCategories/NavCategories'
 import ItemCardContainer from '../ItemCard/ItemCardContainer'
+import Loader from '../Loader'
 import { searchItems } from '../../services/requestsItems'
 import './Searcher.css'
 
@@ -43,7 +44,7 @@ const Searcher = () => {
       updateCategory={ setCategory }
       category={ category }/>
       {load
-        ? <CircularProgress color='primary'/>
+        ? <Loader/>
         : results.length !== 0
           ? category.length === 0
             ? showResults()
