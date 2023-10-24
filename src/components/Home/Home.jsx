@@ -1,10 +1,7 @@
-import Searcher from '../Searcher/Searcher'
 
 const Home = () => {
   return (
-    <>
-      <Searcher/>
-    </>
+    <div>Home</div>
   )
 }
 
