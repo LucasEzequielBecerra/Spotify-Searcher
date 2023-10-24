@@ -1,14 +1,21 @@
-@import url("https://fonts.googleapis.com/css?family=Public+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Helvetica+Neue&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
-  color: #000000e4;
+  color: #fff;
   padding: 0;
 }
 
 body {
-  font-family: 'Public Sans';
-  background-color: #eeeeee;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #000;
+}
+
+.btn {
+  @apply flex items-center justify-center w-8 h-8 bg-dark-button-bg rounded-full;
 }
 
 /* Scrollbar */
