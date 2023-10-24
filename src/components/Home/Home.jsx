@@ -1,7 +1,10 @@
+import HomeHeader from './HomeHeader'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <HomeHeader/>
+    </>
   )
 }
 
