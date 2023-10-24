@@ -14,6 +14,7 @@ const requestsAccess = async () => {
     const { access_token } = await req.json()
     const searchParameters = {
       method: 'GET',
+      // eslint-disable-next-line camelcase
       headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + access_token }
     }
     return searchParameters
