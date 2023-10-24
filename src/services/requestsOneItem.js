@@ -8,6 +8,6 @@ export async function requestsOneItem (type, id) {
       .then(data => data)
     return data
   } catch (error) {
-    console.log(error)
+
   }
 }
