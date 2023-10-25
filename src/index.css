@@ -20,13 +20,8 @@ body {
 
 /* Scrollbar */
 
-::-webkit-scrollbar {
+::-webkit-scrollbar, ::-webkit-scrollbar:horizontal {
   width: 10px;
-  background-color: #f5f5f5;
-}
-
-::-webkit-scrollbar:horizontal {
-  height: 10px;
   background-color: #f5f5f5;
 }
 

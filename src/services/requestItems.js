@@ -1,4 +1,4 @@
-import requestsAccess from './requestsAccess'
+import requestsAccess from './requestAccess'
 
 export async function searchItems (searchInput, categories) {
   // Declaro el tipo de búsqueda y su límite

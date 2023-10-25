@@ -1,4 +1,4 @@
-import CategoriesListContainer from '../CategoriesListContainer/CategoriesListContainer'
+import CategoriesListContainer from '../Categories/CategoriesListContainer'
 import HomeHeader from './HomeHeader'
 
 const Home = () => {
