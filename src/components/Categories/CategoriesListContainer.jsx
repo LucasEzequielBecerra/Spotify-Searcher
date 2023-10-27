@@ -3,14 +3,12 @@ import requestCategories from '../../services/requestCategories'
 import CategoryCard from './CategoryCard'
 import Loader from '../Loader/Loader'
 
-const CategoriesListContainer = () => {
+const CategoriesListContainer = ({ loading, setLoading }) => {
   const [categories, setCategories] = useState([])
-  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     requestCategories()
       .then(res => {
-        console.log(res)
         setCategories(res.categories.items)
       })
       .catch(err => console.log(err)) // TODO: error msg
