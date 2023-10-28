@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { searchItems } from '../../services/searchtItems'
 
@@ -6,7 +6,7 @@ const Searcher = ({ setLoading, setSearchResults }) => {
   const searchInput = useRef(null)
 
   const submitHandler = e => {
-    e.preventDefaukt()
+    e.preventDefault()
   }
 
   const searchHandler = () => {
