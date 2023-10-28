@@ -2,7 +2,7 @@ import requestsAccess from './requestAccess'
 
 export async function searchItems (searchInput, categories) {
   // Declaro el tipo de búsqueda y su límite
-  if (categories.length === 0) categories = ['artist', 'album', 'track']
+  if (categories.length === 0) categories = ['artist', 'album', 'track', 'playlist', 'show', 'episode', 'audiobook']
   const type = '&type=' + categories.join('%2C')
   const limit = categories.length === 1 ? 50 : 12
 
