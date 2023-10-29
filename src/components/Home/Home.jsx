@@ -11,10 +11,10 @@ const Home = () => {
 
   return (
     <>
-      <HomeHeader setSearchResults={setSearchResults} setLoading={setLoading}/>
+      <HomeHeader setSearchResults={setSearchResults} setLoading={setLoading} />
       {searchResults.length === 0
         ? (<CategoriesListContainer loading={loading} setLoading={setLoading} />)
-        : (<ResultsScreen/>)
+        : (<ResultsScreen />)
 
       }
     </>

@@ -10,7 +10,7 @@ const HomeHeader = (props) => {
             <NavigationArrow direction='right'/>
             <Searcher {...props}/>
         </div>
-        <button className='btn me-4'><AiOutlineUser size='1.2rem'/></button>
+        <button className='circular-btn me-4'><AiOutlineUser size='1.2rem'/></button>
     </header>
   )
 }
