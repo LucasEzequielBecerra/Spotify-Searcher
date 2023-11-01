@@ -11,7 +11,8 @@ export default {
         'dark-button-bg': '#0a0a0a',
         'dark-bg-lite': '#181818',
         'dark-text-lite': '#6a6a6a',
-        'dark-bg-hover': '#2a2a2a'
+        'dark-bg-hover': '#2a2a2a',
+        'dark-dark-bg': '#141414'
       }
     }
   },
