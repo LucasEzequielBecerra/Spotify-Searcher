@@ -1,18 +1,37 @@
-import AlbumsCards from './AlbumsCards'
+import { useEffect, useState } from 'react'
+import ResultsCards from './ResultsCards'
 import SongCard from './SongCard'
 
 const ResultsScreen = () => {
-  window.addEventListener('resize', screnSize)
+  const [quantity, setQuantity] = useState(9)
 
-  const quantity = screnSize()
-
-  function screnSize () {
-    if (window.screen.width <= 640) {
-      return 2
-    } else return 8
+  function screenSize () {
+    if (window.screen.width <= 640) return 2
+    else if (window.screen.width > 640 && window.screen.width <= 870) return 3
+    else if (window.screen.width > 870 && window.screen.width <= 1100) return 4
+    else if (window.screen.width > 1100 && window.screen.width <= 1300) return 5
+    else if (window.screen.width > 1300 && window.screen.width <= 1500) return 6
+    else if (window.screen.width > 1500 && window.screen.width <= 1700) return 7
+    else return 9
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newQuantity = screenSize()
+      setQuantity(newQuantity)
+    }
+    window.addEventListener('resize', handleResize)
+
+    const cantidadInicial = screenSize()
+    setQuantity(cantidadInicial)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   return (
-    <main className="flex flex-col items-center m-auto mt-6 gap-5">
+    <main className="flex flex-col items-center m-auto mt-6 gap-14">
         <section className="flex flex-col sm:flex-row w-full" >
             <div className='sm:mx-6 mx-auto mt-1 w-5/6 sm:w-1/3'>
                 <h2 className="title">Top result</h2>
@@ -24,7 +43,7 @@ const ResultsScreen = () => {
                         <p className="font-bold text-xl">NO SOY DE ACÁ</p>
                         <footer className="flex justify-between items-center">
                         <div className=" text-dark-text-lite "> <a href="" className='hover:underline'>Sullivan,</a><a href="" className='hover:underline'> Piña de Say Ocean</a></div>
-                            <p className="inline-block btn bg-dark-bg-lite p-1 ml-8 rounded-full text-base opacity-75">Song</p>
+                            <p className="inline-block btn-dark p-1 ml-8 rounded-full text-base">Song</p>
                         </footer>
                     </div>
                 </article>
@@ -39,9 +58,41 @@ const ResultsScreen = () => {
         </section>
         <section className='flex flex-col w-5/6 sm:w-full'>
             <div className=' sm:mx-6'>
+            <h2 className="title flex flex-row ">Artists</h2>
+            <div className='flex flex-row  justify-start gap-5'>
+            {Array.from({ length: quantity }).map((_, index) => (<ResultsCards key={index} type={'Artist'}/>))}
+            </div>
+            </div>
+        </section>
+        <section className='flex flex-col w-5/6 sm:w-full'>
+            <div className=' sm:mx-6'>
             <h2 className="title flex flex-row ">Albums</h2>
             <div className='flex flex-row  justify-start gap-5'>
-            {Array.from({ length: quantity }).map((_, index) => (<AlbumsCards key={index}/>))}
+            {Array.from({ length: quantity }).map((_, index) => (<ResultsCards key={index} type={'Album'}/>))}
+            </div>
+            </div>
+        </section>
+        <section className='flex flex-col w-5/6 sm:w-full'>
+            <div className=' sm:mx-6'>
+            <h2 className="title flex flex-row ">Playlists</h2>
+            <div className='flex flex-row  justify-start gap-5'>
+            {Array.from({ length: quantity }).map((_, index) => (<ResultsCards key={index} type={'Playlist'}/>))}
+            </div>
+            </div>
+        </section>
+        <section className='flex flex-col w-5/6 sm:w-full'>
+            <div className=' sm:mx-6'>
+            <h2 className="title flex flex-row ">Podcasts</h2>
+            <div className='flex flex-row  justify-start gap-5'>
+            {Array.from({ length: quantity }).map((_, index) => (<ResultsCards key={index} type={'Podcast'}/>))}
+            </div>
+            </div>
+        </section>
+        <section className='flex flex-col w-5/6 sm:w-full'>
+            <div className=' sm:mx-6'>
+            <h2 className="title flex flex-row ">Episodes</h2>
+            <div className='flex flex-row  justify-start gap-5'>
+            {Array.from({ length: quantity }).map((_, index) => (<ResultsCards key={index} type={'Episode'}/>))}
             </div>
             </div>
         </section>

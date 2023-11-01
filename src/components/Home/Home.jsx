@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import CategoriesListContainer from '../Categories/CategoriesListContainer'
 import HomeHeader from './HomeHeader'
 import ResultsScreen from '../ResultsViews/ResultsScreen'
@@ -8,13 +8,13 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState(['a'])
 
   return (
-    <>
+    <div className='overflow-x-hidden'>
       <HomeHeader setSearchResults={setSearchResults} setLoading={setLoading} />
       {searchResults.length === 0
         ? (<CategoriesListContainer loading={loading} setLoading={setLoading} />)
         : (<ResultsScreen />)
       }
-    </>
+    </div>
   )
 }
 

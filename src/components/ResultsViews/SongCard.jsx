@@ -3,9 +3,9 @@ import { FiMoreHorizontal } from 'react-icons/fi'
 
 const SongCard = () => {
   return (
-    <article className="w-72 rounded w-full ms-1 px-2 py-1 flex justify-between items-center group hover:bg-dark-bg-hover">
+    <article className="rounded w-full h-12 ms-1 px-2 py-1 flex justify-between items-center group hover:bg-dark-bg-hover">
         <div className="flex items-center gap-5">
-            <picture className="relative w-12 ">
+            <picture className="relative w-10 ">
                 <img className="rounded-sm group-hover:brightness-50" src="https://i.scdn.co/image/ab67616d00001e029f96ce0d84b2214a87f72f6e" alt="" />
                 <button className="flex justify-center items-center w-full h-full absolute p-0 top-0 left-0 opacity-0 group-hover:opacity-100">
                     <FaPlay size='1.2em'/>
