@@ -9,7 +9,6 @@ const CategoriesListContainer = ({ loading, setLoading }) => {
   useEffect(() => {
     requestCategories()
       .then(res => {
-        console.log(res)
         setCategories(res.categories.items)
       })
       .catch(err => console.log(err)) // TODO: error msg

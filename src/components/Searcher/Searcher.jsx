@@ -1,8 +1,10 @@
 import { useRef } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { searchItems } from '../../services/searchtItems'
+import { useScreenSize } from '../../Hooks/useScreenSize'
 
 const Searcher = ({ setLoading, setSearchResults }) => {
+  const { quantity } = useScreenSize()
   const searchInput = useRef(null)
 
   const submitHandler = e => {
@@ -13,12 +15,14 @@ const Searcher = ({ setLoading, setSearchResults }) => {
     if (!searchInput.current.value) setSearchResults([])
     else {
       setLoading(true)
-      searchItems(searchInput.current.value, [])
-        .then(res => {
-          setSearchResults(res)
-        })
-        .catch(err => console.log(err)) // TODO: error msg
-        .finally(() => setLoading(false))
+      setTimeout(() => {
+        searchItems(searchInput.current.value, ['track', 'artist', 'album', 'playlist', 'episode', 'show'], quantity)
+          .then(res => {
+            setSearchResults(res)
+          })
+          .catch(err => console.log(err)) // TODO: error msg
+          .finally(() => setLoading(false))
+      }, 500)
     }
   }
 

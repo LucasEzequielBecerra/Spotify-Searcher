@@ -1,18 +1,16 @@
 import requestsAccess from './requestAccess'
 
-export async function searchItems (searchInput, categories) {
-  // Declaro el tipo de búsqueda y su límite
-  if (categories.length === 0) categories = ['track', 'artist', 'album', 'playlist', 'episode']
+export async function searchItems (searchInput, categories, limits) {
+  if (categories.length === 0) categories = ['track', 'artist', 'album', 'playlist', 'episode', 'show']
   const type = '&type=' + categories.join('%2C')
-  const limit = categories.length === 1 ? 50 : 12
+  const limit = limits
 
   // Genero la url y realizo la petición
   try {
     const searchParameters = await requestsAccess()
     if (searchInput === '') return []
-    const data = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + type + `&limit=${limit}`, searchParameters)
-      .then(response => response.json())
-      .then(data => data)
+    const response = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + type + `&limit=${limit}` + '&market=AR', searchParameters)
+    const data = await response.json()
     return data
   } catch (error) {
     console.log(error)
