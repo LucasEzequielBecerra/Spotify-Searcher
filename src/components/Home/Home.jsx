@@ -12,7 +12,7 @@ const Home = () => {
       <HomeHeader setSearchResults={setSearchResults} setLoading={setLoading} />
       {searchResults.length === 0
         ? (<CategoriesListContainer loading={loading} setLoading={setLoading} />)
-        : (<ResultsScreen results={searchResults} />)
+        : (<ResultsScreen results={searchResults} loading={loading} />)
       }
     </div>
   )
