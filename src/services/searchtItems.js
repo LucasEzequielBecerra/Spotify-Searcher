@@ -1,9 +1,14 @@
 import requestsAccess from './requestAccess'
 
 export async function searchItems (searchInput, categories, limits) {
-  if (categories.length === 0) categories = ['track', 'artist', 'album', 'playlist', 'episode', 'show']
-  const type = '&type=' + categories.join('%2C')
+  if (categories === 'all') categories = ['track', 'artist', 'album', 'playlist', 'episode', 'show']
+  let type = '&type='
+  if (Array.isArray(categories)) {
+    type = type + categories.join('%2C')
+  } else { type = type + categories }
   const limit = limits
+
+  console.log(type)
 
   // Genero la url y realizo la petición
   try {

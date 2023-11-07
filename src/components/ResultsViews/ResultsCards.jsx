@@ -1,13 +1,10 @@
 import { FaPlay } from 'react-icons/fa'
 
-const ResultsCards = ({ type }) => {
-  const typeCard = type.type
-  console.log(type)
-
+const ResultsCards = ({ info, typeCard }) => {
   return (
     <article className='w-48 flex flex-col  p-4 bg-dark-bg-lite rounded-md gap-2 cursor-pointer hover:bg-dark-bg-hover duration-200 h-62 group'>
                 <picture className="w-full relative" >
-                    <img className={typeCard === 'artist' ? 'rounded-full' : 'rounded' }src={type.images[0].url} alt="" />
+                    <img className={typeCard === 'artist' ? 'rounded-full' : 'rounded' }src={info.images[0].url} alt="" />
                     {
                     typeCard === 'podcast' || typeCard === 'episode'
                       ? ''
@@ -17,16 +14,16 @@ const ResultsCards = ({ type }) => {
                     }
                 </picture>
                 <div>
-                    <p className='text-lg truncate'>{type.name}</p>
+                    <p className='text-lg truncate'>{info.name}</p>
                     <div className='flex flex-wrap truncate  text-dark-text-lite text-sm tracking-wide h-10'>
                         <p className='text-inherit'>
-                          {typeCard === 'album' ? `${type.release_date.split('-')[0]}  •` : typeCard === 'playlist' ? 'De' : typeCard === 'episode' ? `${type.release_date.split('-')[0]} •` : ''}
+                          {typeCard === 'album' ? `${info.release_date.split('-')[0]}  •` : typeCard === 'playlist' ? 'De' : typeCard === 'episode' ? `${info.release_date.split('-')[0]} •` : ''}
                         </p>
                       {typeCard === 'album'
-                        ? type.artists.map((a, index) => {
+                        ? info.artists.map((a, index) => {
                           return <p key={index} href='' className='text-inherit hover:underline ml-1'>{a.name},</p>
                         })
-                        : <p className="text-inherit ml-1"> {typeCard === 'artist' ? 'Artist' : typeCard === 'episode' ? `${Math.floor(type.duration_ms / 60000)} min` : typeCard === 'playlist' ? `${type.owner.display_name}` : type.publisher}  </p>
+                        : <p className="text-inherit ml-1"> {typeCard === 'artist' ? 'Artist' : typeCard === 'episode' ? `${Math.floor(info.duration_ms / 60000)} min` : typeCard === 'playlist' ? `${info.owner.display_name}` : info.publisher}  </p>
                         }
                     </div>
                 </div>
