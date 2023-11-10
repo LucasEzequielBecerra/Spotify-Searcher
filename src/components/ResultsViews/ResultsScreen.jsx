@@ -9,11 +9,14 @@ const ResultsScreen = ({ results, loading }) => {
 
   const { quantity } = useScreenSize()
 
+  console.log(results)
+
   function mappingCards (arr) {
     if (arr.length > 0) {
-      const arrToMap = arr.slice(0, quantity)
-      return arrToMap.map((item) => {
-        return (<ResultsCards key={item.id} info={item} typeCard={item.type}/>)
+      const arrToMap = arr.slice(1, quantity)
+      arrToMap.map((item) => {
+        console.log(item)
+        return item ? <ResultsCards key={item.id} info={item} typeCard={item.type}/> : null
       })
     } else return console.error('Invalid search')
   }
@@ -54,6 +57,7 @@ const ResultsScreen = ({ results, loading }) => {
             <div className=' sm:mx-6'>
             <h2 className="title flex flex-row ">Artists</h2>
             <div className='flex flex-row  justify-start gap-5'>
+                {console.log(results.artists)}
                 {results.artists
                   ? mappingCards(results.artists.items)
                   : <p>no hay resultado</p>}
@@ -66,7 +70,7 @@ const ResultsScreen = ({ results, loading }) => {
             <div className='flex flex-row  justify-start gap-5'>
             {results.albums
               ? mappingCards(results.albums.items)
-              : <p>no hay resultasdos</p>}</div>
+              : <p>no hay resultados</p>}</div>
             </div>
         </section>
          <section className='flex flex-col w-5/6 sm:w-full'>

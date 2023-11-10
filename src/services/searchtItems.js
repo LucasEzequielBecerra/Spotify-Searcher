@@ -8,8 +8,6 @@ export async function searchItems (searchInput, categories, limits) {
   } else { type = type + categories }
   const limit = limits
 
-  console.log(type)
-
   // Genero la url y realizo la petición
   try {
     const searchParameters = await requestsAccess()
