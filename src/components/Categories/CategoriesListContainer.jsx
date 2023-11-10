@@ -3,8 +3,9 @@ import requestCategories from '../../services/requestCategories'
 import CategoryCard from './CategoryCard'
 import Loader from '../Loader/Loader'
 
-const CategoriesListContainer = ({ loading, setLoading }) => {
+const CategoriesListContainer = () => {
   const [categories, setCategories] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     requestCategories()
