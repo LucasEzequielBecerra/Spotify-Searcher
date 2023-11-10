@@ -6,8 +6,10 @@ import { AiOutlineUser } from 'react-icons/ai'
 const HomeHeader = (props) => {
   const [category, setCategory] = useState('all')
   const handleClick = (e) => {
-    setCategory(e.target.name)
+    setCategory(e.target.name.toLowerCase())
   }
+
+  const categoriesNames = ['All', 'Artist', 'Album', 'Track', 'Playlist', 'Show', 'Episode']
   return (
     <>
     <header className="flex items-center place-content-between h-16 bg-dark-bg">
@@ -18,14 +20,10 @@ const HomeHeader = (props) => {
         </div>
         <button className='circular-btn me-4'><AiOutlineUser size='1.2rem'/></button>
     </header>
-    <section className=' flex gap-5'>
-      <button name='all' onClick={handleClick}>All</button>
-      <button name='artist' onClick={handleClick}>Artists</button>
-      <button name='album' onClick={handleClick}>Albums</button>
-      <button name='track' onClick={handleClick}>Songs</button>
-      <button name='playlist' onClick={handleClick}>Playlists</button>
-      <button name='show' onClick={handleClick}>Podcasts</button>
-      <button name='episode' onClick={handleClick}>Episodes</button>
+    <section className='flex gap-1 m-2'>
+      {categoriesNames.map((categoryName, index) => {
+        return <button key={index} className='btn' name={categoryName} onClick={handleClick}>{categoryName}</button>
+      })}
     </section>
     </>
   )
