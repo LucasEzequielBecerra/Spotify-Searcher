@@ -2,7 +2,9 @@ import { FaPlay } from 'react-icons/fa'
 
 const ResultsCards = ({ info, typeCard }) => {
   return (
-    <article className='w-48 flex flex-col  p-4 bg-dark-bg-lite rounded-md gap-2 cursor-pointer hover:bg-dark-bg-hover duration-200 h-62 group'>
+    info.total === 0
+      ? ''
+      : <article className='w-48 flex flex-col  p-4 bg-dark-bg-lite rounded-md gap-2 cursor-pointer hover:bg-dark-bg-hover duration-200 h-62 group'>
                 <picture className="w-full relative" >
                     <img className={typeCard === 'artist' ? 'rounded-full' : 'rounded' }src={info.images[0].url} alt="" />
                     {
@@ -27,8 +29,7 @@ const ResultsCards = ({ info, typeCard }) => {
                         }
                     </div>
                 </div>
-            </article>
-  )
+            </article>)
 }
 
 export default ResultsCards

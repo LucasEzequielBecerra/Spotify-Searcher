@@ -20,7 +20,7 @@ const useSearcher = () => {
     const timeoutId = setTimeout(async () => {
       try {
         const res = await searchItems(value, category, quantity)
-        console.log(res)
+        console.log(res, 'resultado de hook')
         setSearchResults(res)
       } catch (error) {
         console.error(error) // TODO: handle error

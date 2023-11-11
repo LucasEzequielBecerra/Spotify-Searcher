@@ -1,5 +1,5 @@
 import CategoryDetail from './Components/Categories/CategoryDetail'
-import Home from './components/Home/Home'
+import Home from './Components/Home/Home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { SearchProvider } from './context/SearchContext'
 
