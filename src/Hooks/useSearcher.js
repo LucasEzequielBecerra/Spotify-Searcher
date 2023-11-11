@@ -4,7 +4,7 @@ import { useScreenSize } from './useScreenSize'
 
 const useSearcher = () => {
   const [searchTerm, setSearchTerm] = useState('')
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState({})
   const [loading, setLoading] = useState(false)
   const [typingTimeout, setTypingTimeout] = useState(0)
   const [category, setCategory] = useState('all')
@@ -20,7 +20,6 @@ const useSearcher = () => {
     const timeoutId = setTimeout(async () => {
       try {
         const res = await searchItems(value, category, quantity)
-        console.log(res, 'resultado de hook')
         setSearchResults(res)
       } catch (error) {
         console.error(error) // TODO: handle error
