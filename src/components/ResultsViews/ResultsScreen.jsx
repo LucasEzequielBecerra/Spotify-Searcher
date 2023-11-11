@@ -4,20 +4,17 @@ import { useScreenSize } from '../../Hooks/useScreenSize'
 import Loader from '../Loader/Loader'
 
 const ResultsScreen = ({ results, loading }) => {
-  const type = results.artists?.items[0].type
-  const songs = results.tracks?.items.slice(0, 4)
+  const type = results.artists.total > 0 && results.artists.items[0].type
+  const songs = results.tracks.total > 0 && results.tracks.items.slice(0, 4)
 
   const { quantity } = useScreenSize()
 
-  console.log(results)
-
   function mappingCards (arr) {
     if (arr.length > 0) {
-      const arrToMap = arr.slice(1, quantity)
-      arrToMap.map((item) => {
-        console.log(item)
-        return item ? <ResultsCards key={item.id} info={item} typeCard={item.type}/> : null
-      })
+      const arrToFilter = arr.slice(1, quantity)
+      const arrToMap = arrToFilter.filter(item => item)
+      return arrToMap.map((item) => (<ResultsCards key={item.id} info={item} typeCard={item.type}/>)
+      )
     } else return console.error('Invalid search')
   }
 
@@ -41,65 +38,76 @@ const ResultsScreen = ({ results, loading }) => {
                     </div>
                 </article>
                 </div>
-                  : <p>no hay resultados</p>
+                  : ''
 
                 }
-            <div className='mx-auto w-5/6 sm:w-2/3 flex flex-col gap-3'>
-                <h2 className="title">Songs</h2>
                 {songs
-                  ? songs.map((song) =>
-                  <SongCard key={song.id} song={song}/>
-                  )
-                  : <p>no hay resultados</p>}
+                  ? <div className='mx-auto w-5/6 sm:w-2/3 flex flex-col gap-3'>
+                <h2 className="title">Songs</h2>
+                {songs.map((song) => <SongCard key={song.id} song={song}/>)}
             </div>
+                  : ''}
         </section>
-        <section className='flex flex-col w-5/6 sm:w-full'>
+        {results.artists.total === 0
+          ? ''
+          : <section className='flex flex-col w-5/6 sm:w-full'>
             <div className=' sm:mx-6'>
             <h2 className="title flex flex-row ">Artists</h2>
             <div className='flex flex-row  justify-start gap-5'>
-                {console.log(results.artists)}
-                {results.artists
-                  ? mappingCards(results.artists.items)
-                  : <p>no hay resultado</p>}
+                    {results.artists.total > 0 &&
+                      mappingCards(results.artists.items)}
             </div>
             </div>
         </section>
-         <section className='flex flex-col w-5/6 sm:w-full'>
+        }
+        {results.albums.total === 0
+          ? ''
+          : <section className='flex flex-col w-5/6 sm:w-full'>
             <div className=' sm:mx-6'>
             <h2 className="title flex flex-row ">Albums</h2>
             <div className='flex flex-row  justify-start gap-5'>
-            {results.albums
-              ? mappingCards(results.albums.items)
-              : <p>no hay resultados</p>}</div>
+            {results.albums.total > 0 &&
+                      mappingCards(results.albums.items)}
+            </div>
             </div>
         </section>
-         <section className='flex flex-col w-5/6 sm:w-full'>
+        }
+        {results.playlists.total === 0
+          ? ''
+          : <section className='flex flex-col w-5/6 sm:w-full'>
             <div className=' sm:mx-6'>
             <h2 className="title flex flex-row ">Playlists</h2>
             <div className='flex flex-row  justify-start gap-5'>
-            {results.playlists
-              ? mappingCards(results.playlists.items)
-              : <p>no hay resultasdos</p>}           </div>
+            {results.playlists.total > 0 &&
+                      mappingCards(results.playlists.items)}
+            </div>
             </div>
         </section>
-         <section className='flex flex-col w-5/6 sm:w-full'>
+        }
+        {results.shows.total === 0
+          ? ''
+          : <section className='flex flex-col w-5/6 sm:w-full'>
             <div className=' sm:mx-6'>
             <h2 className="title flex flex-row ">Podcasts</h2>
             <div className='flex flex-row  justify-start gap-5'>
-            {results.shows
-              ? mappingCards(results.shows.items)
-              : <p>no hay resultasdos</p>}          </div>
+            {results.shows.total > 0 &&
+                      mappingCards(results.shows.items)}
+            </div>
             </div>
         </section>
-        <section className='flex flex-col w-5/6 sm:w-full'>
+        }
+        {results.episodes.total === 0
+          ? ''
+          : <section className='flex flex-col w-5/6 sm:w-full'>
             <div className=' sm:mx-6'>
             <h2 className="title flex flex-row ">Episodes</h2>
             <div className='flex flex-row  justify-start gap-5'>
-            {results.episodes
-              ? mappingCards(results.episodes.items)
-              : <p>no hay resultasdos</p>}         </div>
+            {results.episodes.total > 0 &&
+                      mappingCards(results.episodes.items)}
+            </div>
             </div>
         </section>
+        }
 
     </main>
 
