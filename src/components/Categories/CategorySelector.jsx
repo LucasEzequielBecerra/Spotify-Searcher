@@ -1,13 +1,13 @@
 import { useContext } from 'react'
 import { SearchContext } from '../../context/SearchContext'
 
+const categoriesNames = ['All', 'Artist', 'Album', 'Track', 'Playlist', 'Show', 'Episode']
+
 const CategorySelector = () => {
   const { setCategory } = useContext(SearchContext)
   const handleClick = (e) => {
     setCategory(e.target.name.toLowerCase())
   }
-
-  const categoriesNames = ['All', 'Artist', 'Album', 'Track', 'Playlist', 'Show', 'Episode']
 
   return (
     <section className='flex gap-1 m-2'>
@@ -18,4 +18,4 @@ const CategorySelector = () => {
   )
 }
 
-export default CategorySelector
+export { categoriesNames, CategorySelector }
