@@ -1,12 +1,15 @@
 import { FaPlay } from 'react-icons/fa'
+import SongsResults from './SongsResults'
 
 const ResultsCards = ({ info, typeCard }) => {
   return (
     info.total === 0
       ? ''
-      : <article className='w-48 flex flex-col  p-4 bg-dark-bg-lite rounded-md gap-2 cursor-pointer hover:bg-dark-bg-hover duration-200 h-62 group'>
+      : typeCard === 'track'
+        ? <SongsResults/>
+        : <article className='w-48 flex flex-col  p-4 bg-dark-bg-lite rounded-md gap-2 cursor-pointer hover:bg-dark-bg-hover duration-200 h-62 group'>
           <picture className="w-full relative" >
-            <img className={typeCard === 'artist' ? 'rounded-full' : 'rounded' }src={info.images[0].url} alt="" />
+            <img className={typeCard === 'artist' ? 'rounded-full' : 'rounded' }src={info?.images[0]?.url} alt={info.name} />
             {
             typeCard === 'podcast' || typeCard === 'episode'
               ? ''

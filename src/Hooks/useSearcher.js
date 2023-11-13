@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { searchItems } from '../services/searchtItems'
 import { useScreenSize } from './useScreenSize'
 
@@ -9,6 +9,10 @@ const useSearcher = () => {
   const [typingTimeout, setTypingTimeout] = useState(0)
   const [category, setCategory] = useState('all')
   const { quantity } = useScreenSize()
+
+  useEffect(() => {
+    handleSearch(searchTerm)
+  }, [category])
 
   const handleSearch = async (value) => {
     // Clear the previous timeout to avoid multiple API calls in quick succession
@@ -41,8 +45,10 @@ const useSearcher = () => {
   return {
     searchTerm,
     searchResults,
+    setLoading,
     loading,
     setCategory,
+    category,
     handleChange
   }
 }
