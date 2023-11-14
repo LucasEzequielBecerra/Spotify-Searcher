@@ -5,17 +5,19 @@ import { useContext } from 'react'
 import { SearchContext } from '../../context/SearchContext'
 import { categoriesNames } from '../Categories/CategorySelector'
 import ResultsHeader from './ResultsHeader'
+import SongsResults from './SongsResults'
 
 const ResultsScreen = () => {
   const { searchResults, loading, category } = useContext(SearchContext)
 
   let existResults
 
-  const { quantity } = useScreenSize()
+  let { quantity } = useScreenSize()
 
-  // console.log(searchResults)
+  if (category !== 'all') quantity = 30
 
   function mappingCards (arr) {
+    console.log(arr)
     if (arr.length > 0) {
       const arrToFilter = arr.slice(0, quantity)
       const arrToMap = arrToFilter.filter(item => item)
@@ -54,7 +56,21 @@ const ResultsScreen = () => {
               }
             })}
             </>
-            : mappingCards(searchResults[category + 's'].items)
+            : category === 'track'
+              ? <>
+              <SongsResults songs={searchResults.tracks.items} quantity={quantity}/>
+            </>
+              : <>
+            { <section key={searchResults[category + 's'].id} className='flex flex-col w-5/6 sm:w-full'>
+              <div className='sm:mx-6'>
+                <h2 className="title flex flex-row">{category.charAt(0).toUpperCase() + category.slice(1) + 's'}</h2>
+                <div className='flex flex-wrap  gap-5'>
+                  {mappingCards(searchResults[category + 's'].items)}
+                </div>
+              </div>
+            </section>}
+
+            </>
           }
     </main>
 

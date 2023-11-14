@@ -4,8 +4,9 @@ import { SearchContext } from '../../context/SearchContext'
 const categoriesNames = ['All', 'Artist', 'Album', 'Track', 'Playlist', 'Show', 'Episode']
 
 const CategorySelector = () => {
-  const { setCategory, setLoading } = useContext(SearchContext)
+  const { setCategory, setLoading, category } = useContext(SearchContext)
   const handleClick = (e) => {
+    if (category === e.target.name.toLowerCase()) return
     setLoading(true)
     setCategory(e.target.name.toLowerCase())
   }
