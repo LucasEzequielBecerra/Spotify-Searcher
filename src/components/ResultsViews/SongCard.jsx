@@ -29,18 +29,16 @@ const SongCard = ({ song, coming, numberList }) => {
             <div className="flex flex-col">
                 <a href='#' className="text-lg font-normal hover:underline w-fit">{song.name}</a>
                 <div href='#' className="text-sm text-dark-text-lite ">
-                    {song.artists.map((a, index) => {
-                      return (
-                        song.artists.length > 1
-                          ? <a key={index} href='#' className='hover:underline'> {a.name},  </a>
-                          : <a key={index} href='#' className='hover:underline'>{a.name} </a>
-                      )
-                    })}
+                    {
+                     <a href='#' className='hover:underline'> {
+                      song.artists.map(obj => obj.name).join(', ')}  </a>
+
+                    }
                 </div>
             </div>
         </div>
         {coming &&
-        <div className='absolute left-1/2 text-dark-text-lite'>
+        <div className='absolute left-1/2 text-dark-text-lite truncate'>
           {song.album.name}
         </div>}
         <div className="flex gap-3">

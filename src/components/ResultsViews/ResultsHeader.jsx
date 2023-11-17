@@ -13,7 +13,7 @@ const ResultsHeader = () => {
     <section className="flex flex-col sm:flex-row w-full" >
       {type && <TopResultCard item={searchResults.artists.items[0]} type={type} />}
       {songs &&
-        <div className='mx-auto w-5/6 sm:w-2/3 flex flex-col gap-3'>
+        <div className='mx-auto w-5/6 sm:w-2/3 flex flex-col gap-3 pr-3'>
           <h2 className="title">Songs</h2>
           {songs.map((song) => <SongCard key={song.id} song={song}/>)}
         </div>}
