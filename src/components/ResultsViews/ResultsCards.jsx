@@ -1,15 +1,19 @@
 import { FaPlay } from 'react-icons/fa'
-import SongsResults from './SongsResults'
+
+import { useState } from 'react'
 
 const ResultsCards = ({ info, typeCard }) => {
+  const [loadingImage, setLoadingImage] = useState(false)
+
+  const handleImageLoaded = () => {
+    setLoadingImage(true)
+  }
   return (
     info.total === 0
       ? ''
-      : typeCard === 'track'
-        ? <SongsResults/>
-        : <article className='w-48 flex flex-col  p-4 bg-dark-bg-lite rounded-md gap-2 cursor-pointer hover:bg-dark-bg-hover duration-200 h-62 group'>
-          <picture className="w-full relative" >
-            <img className={typeCard === 'artist' ? 'rounded-full' : 'rounded' }src={info?.images[0]?.url} alt={info.name} />
+      : <article className='w-44 flex flex-col  p-4 bg-dark-bg-lite rounded-md gap-2 cursor-pointer hover:bg-dark-bg-hover duration-200 h-62 group'>
+          <picture className={loadingImage ? 'w-full relative min-h-[160px]' : 'w-full relative bg-white'}>
+            <img className={typeCard === 'artist' ? 'rounded-full max-h-[144px] w-[144px]' : 'rounded' && loadingImage ? 'opacity-100 rounded-lg' : 'opacity-0 h-40' }src={info?.images[0]?.url} alt={info.name} onLoad={handleImageLoaded} />
             {
             typeCard === 'podcast' || typeCard === 'episode'
               ? ''

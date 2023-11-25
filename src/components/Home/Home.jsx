@@ -10,7 +10,7 @@ const Home = () => {
   const { searchResults } = useContext(SearchContext)
 
   return (
-    <div className='overflow-x-hidden'>
+    <div className='overflow-x-hidden overflow-y-hidden'>
       <HomeHeader/>
       <CategorySelector/>
       {Object.keys(searchResults).length === 0

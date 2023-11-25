@@ -8,7 +8,13 @@ const useSearcher = () => {
   const [loading, setLoading] = useState(false)
   const [typingTimeout, setTypingTimeout] = useState(0)
   const [category, setCategory] = useState('all')
-  const { quantity } = useScreenSize()
+  let { quantity } = useScreenSize()
+
+  if (category !== 'all') quantity = 30
+
+  useEffect(() => {
+    handleSearch(searchTerm)
+  }, [category])
 
   useEffect(() => {
     handleSearch(searchTerm)
@@ -23,6 +29,7 @@ const useSearcher = () => {
     // Set a new timeout to wait for a certain period before making the API call
     const timeoutId = setTimeout(async () => {
       try {
+        console.log(quantity)
         const res = await searchItems(value, category, quantity)
         setSearchResults(res)
       } catch (error) {
