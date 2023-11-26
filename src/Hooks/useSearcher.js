@@ -10,11 +10,11 @@ const useSearcher = () => {
   const [category, setCategory] = useState('all')
   let { quantity } = useScreenSize()
 
-  if (category !== 'all') quantity = 30
-
   useEffect(() => {
     handleSearch(searchTerm)
   }, [category])
+
+  if (category !== 'all') quantity = 30
 
   const handleSearch = async (value) => {
     // Clear the previous timeout to avoid multiple API calls in quick succession
@@ -25,7 +25,6 @@ const useSearcher = () => {
     // Set a new timeout to wait for a certain period before making the API call
     const timeoutId = setTimeout(async () => {
       try {
-        console.log(quantity)
         const res = await searchItems(value, category, quantity)
         setSearchResults(res)
       } catch (error) {

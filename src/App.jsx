@@ -6,14 +6,14 @@ import { SearchProvider } from './context/SearchContext'
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-          <SearchProvider>
-            <Routes>
-              <Route path='/' element={<Home/>}></Route>
-              <Route path='/categories/:id' element={<CategoryDetail/>}></Route>
-            </Routes>
-          </SearchProvider>
-      </BrowserRouter>
+      <SearchProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Home/>}></Route>
+            <Route path='/categories/:id' element={<CategoryDetail/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </SearchProvider>
     </>
   )
 }

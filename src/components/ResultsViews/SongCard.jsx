@@ -9,13 +9,13 @@ const SongCard = ({ song, coming, numberList }) => {
     return `${minutes}:${segundos}`
   }
   return (
-    <article className="rounded w-full h-12 ms-1 px-2 py-1 flex justify-between items-center group hover:bg-dark-bg-hover relative cursor-pointer">
+    <article className="rounded w-full ps-6 h-12 ms-1 px-2 py-1 flex justify-between items-center group hover:bg-dark-bg-hover relative cursor-pointer">
         {coming &&
-        <div className='absolute left-0'>
+        <div className='absolute left-5'>
           <p className='group-hover:opacity-0' >{numberList + 1}</p>
           <button className=" items-center w-full h-full absolute p-0 top-0 left-0 opacity-0 group-hover:opacity-100">
-                    <FaPlay size='1.2em'/>
-                </button>
+            <FaPlay size='0.8em'/>
+          </button>
         </div>}
         <div className="flex pl-7 items-center gap-5">
             <picture className="relative w-10 ">
