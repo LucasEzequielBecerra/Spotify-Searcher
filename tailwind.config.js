@@ -12,7 +12,8 @@ export default {
         'dark-bg-lite': '#181818',
         'dark-text-lite': '#6a6a6a',
         'dark-bg-hover': '#2a2a2a',
-        'dark-dark-bg': '#141414'
+        'dark-dark-bg': '#141414',
+        'selected-button': '#f6f6f6'
       }
     }
   },

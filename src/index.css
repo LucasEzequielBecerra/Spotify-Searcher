@@ -22,6 +22,10 @@ body {
   @apply flex items-center justify-center h-8 px-3 bg-dark-button-bg rounded-full;
 }
 
+.btn-selected {
+  @apply flex items-center justify-center h-8 px-3 bg-selected-button rounded-full text-black;
+}
+
 .btn-dark {
   @apply flex items-center justify-center h-8 px-3 bg-dark-dark-bg rounded-full;
 }
