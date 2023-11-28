@@ -1,13 +1,11 @@
-import requestsAccess from './requestsAccess'
+import requestsAccess from './requestAccess'
 
-export async function requestsOneItem (type, id) {
+export async function requestOneItem (type, id) {
   try {
     const searchParameters = await requestsAccess()
-    const data = await fetch(`https://api.spotify.com/v1/${type}/${id}`, searchParameters)
-      .then(response => response.json())
-      .then(data => data)
-    return data
+    const res = await fetch(`https://api.spotify.com/v1/${type}/${id}`, searchParameters)
+    return res.json()
   } catch (error) {
-
+    return error
   }
 }
