@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css?family=Public+Sans&display=swap");
 
 *{
@@ -34,4 +35,66 @@ body{
 
 ::-webkit-scrollbar-track:hover {
   background-color: #ddd; 
+=======
+@import url("https://fonts.googleapis.com/css?family=Helvetica+Neue&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  color: #fff;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #121212;
+}
+
+.circular-btn {
+  @apply flex items-center justify-center w-8 h-8 bg-dark-button-bg rounded-full;
+}
+
+.btn {
+  @apply flex items-center justify-center h-8 px-3 bg-dark-button-bg rounded-full;
+}
+
+.btn-selected {
+  @apply flex items-center justify-center h-8 px-3 bg-selected-button rounded-full text-black;
+}
+
+.btn-dark {
+  @apply flex items-center justify-center h-8 px-3 bg-dark-dark-bg rounded-full;
+}
+
+.title {
+  @apply w-full text-2xl ms-3 mb-4 font-bold
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar,
+::-webkit-scrollbar:horizontal {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: #ddd;
+>>>>>>> 3431c8139f32c87d6442f04b52be923737dc10e2
 }
