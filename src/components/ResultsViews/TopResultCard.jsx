@@ -1,6 +1,7 @@
 const TopResultCard = ({ item, type }) => {
   return (
-    <div className='mx-auto mt-1 w-5/6 sm:mx-6 sm:w-1/3'>
+    <a href={item.external_urls.spotify} target="_blank"
+    rel="noreferrer" className='mx-auto mt-1 w-5/6 sm:mx-6 sm:w-1/3'>
       <h2 className="title">Top result</h2>
       <article className="bg-dark-bg-lite py-3 mb-4 rounded w-full hover:bg-dark-bg-hover cursor-pointer">
         <picture className="relative w-32 ml-3 block">
@@ -13,7 +14,7 @@ const TopResultCard = ({ item, type }) => {
           </footer>
         </div>
       </article>
-    </div>
+    </a>
   )
 }
 
