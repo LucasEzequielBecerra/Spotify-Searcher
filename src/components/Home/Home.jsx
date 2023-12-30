@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+import Searcher from '../Searcher/Searcher'
+
+const Home = () => {
+  return (
+    <>
+      <Searcher/>
+    </>
+=======
 import { useContext } from 'react'
 import CategoriesListContainer from '../Categories/CategoriesListContainer'
 import HomeHeader from './HomeHeader'
@@ -15,6 +24,7 @@ const Home = () => {
         : (<ResultsScreen />)
       }
     </div>
+>>>>>>> 3431c8139f32c87d6442f04b52be923737dc10e2
   )
 }
 
