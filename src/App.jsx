@@ -1,4 +1,4 @@
-import Home from './Components/Home/Home'
+import Home from './components/Home/Home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { SearchProvider } from './context/SearchContext'
 // import GenreDetails from './components/Details/GenreDetails'
